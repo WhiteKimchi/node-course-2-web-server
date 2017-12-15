@@ -5,6 +5,8 @@ const hbs = require('hbs');
 // file system
 const fs = require('fs');
 
+// get port variable for Heroku from environment variables.
+const port = process.env.PORT || 3000;
 var app = express();
 
 hbs.registerPartials(__dirname + '/views/partials');
@@ -58,6 +60,7 @@ app.get('/bad', (req, res) => {
     });
 });
 
-app.listen(3000, () => {
-    console.log('Server is up on port 3000');
+// variable for port, Heroku using variable ports.
+app.listen(port, () => {
+    console.log(`Server is up on port ${port}`);
 });
